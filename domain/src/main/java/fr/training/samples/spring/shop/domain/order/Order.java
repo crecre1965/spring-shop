@@ -14,8 +14,8 @@ public class Order extends AbstractBaseEntity {
         @ManyToOne
         @JoinColumn(name="CUSTOMER_ID")
         private Customer customer;
-
-        @ManyToMany(targetEntity = Item.class,cascade= CascadeType.ALL)
+//        @ManyToMany(targetEntity = Item.class,cascade= CascadeType.ALL)
+        @ManyToMany(targetEntity = Item.class,cascade= CascadeType.ALL, fetch = FetchType.EAGER)
         private List<Item> items=new ArrayList<>();
 
         private Integer total=0;

@@ -46,10 +46,18 @@ public class OrderRepositoryTest {
     public void restituer_les_commandes_du_client(){
 
         // Given
-        final String clientId="123e4567-189b-42d3-a456-556642440000";
+        final String customerId="123e4567-e89b-42d3-a456-556642440000";
         // When
-        final List<Order> order=orderRepository.findOrdersByCustomerID(customerId)
+        final List<Order> order=orderRepository.findOrdersByCustomerId(customerId);
         // Then
+        System.out.println("               ");
+        System.out.println("               ");
+        System.out.println("               ");
+        System.out.println("  ====             ");
+        System.out.println("customer id : " + customerId);
+        System.out.println("               ");
+        System.out.println("               ");
+        System.out.println("               ");
         assertThat(order).isNotNull();
         assertThat(order.size()).isEqualTo(2);
 

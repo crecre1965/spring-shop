@@ -6,7 +6,7 @@ import java.io.Serializable;
  * @author Badr NASS
  *
  */
-class CustomerDto implements Serializable {
+public class CustomerDto implements Serializable {
 
     /**
      * serialVersionUID of type long

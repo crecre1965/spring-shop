@@ -1,51 +1,34 @@
 package fr.training.samples.spring.shop.exposition.order.rest;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
+
+import fr.training.samples.spring.shop.exposition.customer.rest.CustomerDto;
 import fr.training.samples.spring.shop.exposition.item.rest.ItemDto;
 
 public class OrderDto implements Serializable {
 
-	/**
-	 * serialVersionUID of type long
-	 */
 	private static final long serialVersionUID = 1L;
+    private String orderID;
+	private CustomerDto customer;
+	private List<ItemDto> items;
+	private int total;
 
-	/**
-	 * orderID of type String
-	 */
-	private String orderID;
-
-	/**
-	 * customerID of type String
-	 */
-	private String customerID;
-
-	/**
-	 * items of type Set of ItemDTO
-	 */
-	private Set<ItemDto> items;
-
-	/**
-	 *
-	 */
 	public OrderDto() {
 	}
 
-	/**
-	 * @param orderID
-	 * @param customerID
-	 */
-	public OrderDto(final String orderID, final String customerID) {
+
+	public OrderDto(final String orderID, final CustomerDto customer) {
 		this.orderID = orderID;
-		this.customerID = customerID;
-		items = new HashSet<>();
+		this.customer = customer;
+		items = new ArrayList<>();
 	}
 
 	/**
-	 * @param itemDTO
+	 * /@param itemDTO
 	 */
 	public void addItem(final ItemDto itemDto) {
 		items.add(itemDto);
@@ -54,14 +37,14 @@ public class OrderDto implements Serializable {
 	/**
 	 * @return
 	 */
-	public String getCustomerID() {
-		return customerID;
+	public CustomerDto getCustomerID() {
+		return customer;
 	}
 
 	/**
 	 * @return
 	 */
-	public Set<ItemDto> getItems() {
+	public List<ItemDto> getItems() {
 		return items;
 	}
 
@@ -73,16 +56,17 @@ public class OrderDto implements Serializable {
 	}
 
 	/**
-	 * @param customerID
+	 *
 	 */
-	public void setCustomerID(final String customerID) {
-		this.customerID = customerID;
+	public void setCustomer(final CustomerDto customer) {
+
+		this.customer = customer;
 	}
 
 	/**
 	 * @param items
 	 */
-	public void setItems(final Set<ItemDto> items) {
+	public void setItems(final List<ItemDto> items) {
 		this.items = items;
 	}
 
@@ -102,8 +86,8 @@ public class OrderDto implements Serializable {
 		final StringBuilder builder = new StringBuilder();
 		builder.append("OrderDTO [orderID=");
 		builder.append(orderID);
-		builder.append(", customerID=");
-		builder.append(customerID);
+		builder.append(", customer=");
+		builder.append(customer);
 		builder.append(", items=");
 		builder.append(items);
 		builder.append("]");

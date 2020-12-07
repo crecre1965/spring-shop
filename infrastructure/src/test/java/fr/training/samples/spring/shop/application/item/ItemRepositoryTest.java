@@ -1,4 +1,4 @@
-package fr.training.samples.spring.shop.item;
+package fr.training.samples.spring.shop.application.item;
 
 
 import fr.training.samples.spring.shop.domain.customer.Customer;

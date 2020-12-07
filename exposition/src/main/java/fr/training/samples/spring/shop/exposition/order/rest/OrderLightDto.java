@@ -1,7 +1,10 @@
 package fr.training.samples.spring.shop.exposition.order.rest;
 
+import fr.training.samples.spring.shop.exposition.item.rest.ItemLightDto;
+
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
+
 
 public class OrderLightDto implements Serializable {
 
@@ -18,7 +21,7 @@ public class OrderLightDto implements Serializable {
 	/**
 	 * items of type Set of ItemDTO
 	 */
-	private Set<String> items;
+	private List<String> items;
 
 	/**
 	 *
@@ -33,11 +36,11 @@ public class OrderLightDto implements Serializable {
 		return customerID;
 	}
 
-	public Set<String> getItems() {
+	public List<String> getItems() {
 		return items;
 	}
 
-	public void setItems(final Set<String> items) {
+	public void setItems(final List<String> items) {
 		this.items = items;
 	}
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public class ItemRepositoryImpl implements ItemRepository {
-    private final ItemJpaRepository itemDataJpaRepository;
+    private ItemJpaRepository itemDataJpaRepository;
     public ItemRepositoryImpl(final ItemJpaRepository itemDataJpaRepository){
         this.itemDataJpaRepository=itemDataJpaRepository;
     }
@@ -26,7 +26,7 @@ public class ItemRepositoryImpl implements ItemRepository {
 
 
 //    @Override
-    public final List<Item> findAll(){
+    public List<Item> findAll(){
         return itemDataJpaRepository.findAll();
     }
 
