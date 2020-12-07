@@ -6,4 +6,5 @@ public interface ItemRepository {
     public Item findById(String id);
     public void save (Item item);
     public List<Item> findAll();
+    public List<Item> findById(List<String> ids);
 }

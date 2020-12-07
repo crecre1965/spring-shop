@@ -5,6 +5,8 @@ import fr.training.samples.spring.shop.domain.order.Order;
 import fr.training.samples.spring.shop.domain.order.OrderRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class OrderRepositoryImpl implements OrderRepository {
     private final OrderJpaRepository orderJpaRepository;
@@ -23,4 +25,11 @@ public class OrderRepositoryImpl implements OrderRepository {
         orderJpaRepository.save(order);
 
     }
+
+
+    public List<Order> findOrdersByCustomerId(String customerId) {
+        return orderJpaRepository.findByCustomerId(customerId);
+    }
+
+
 }

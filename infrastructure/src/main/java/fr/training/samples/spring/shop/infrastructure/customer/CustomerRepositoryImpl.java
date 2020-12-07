@@ -25,4 +25,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 		customerDataJpaRepository.save(customer);
 	}
 
+	@Override
+	public Customer findByName(String name){
+		return customerDataJpaRepository.findByName(name);
+	}
+
 }

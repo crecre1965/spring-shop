@@ -45,4 +45,16 @@ public class CustomerRepositoryTest {
 		assertThat(customerRepository.findById(customer.getId())).isNotNull();
 	}
 
+	@Test
+	public void shoudCheckThisAndThat() {
+		// Given
+		final String name="NAME3";
+		// When
+		final Customer result = customerRepository.findByName(name);
+		//then
+		assertThat(result).isNotNull();
+//		assertThat(result.getId()).isEqualTo("");
+	}
+
+
 }

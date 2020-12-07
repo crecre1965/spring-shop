@@ -9,9 +9,12 @@ import fr.training.samples.spring.shop.domain.order.OrderRepository;
 import org.junit.Test;
 import org.junit.platform.engine.reporting.ReportEntry;
 import org.junit.runner.RunWith;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -38,6 +41,18 @@ public class OrderRepositoryTest {
         assertThat(order).isNotNull();
         assertThat(order.getId()).isEqualTo(orderId);
         assertThat(order.getCustomer().getName()).isEqualTo("NAME1");
+    }
+    @Test
+    public void restituer_les_commandes_du_client(){
+
+        // Given
+        final String clientId="123e4567-189b-42d3-a456-556642440000";
+        // When
+        final List<Order> order=orderRepository.findOrdersByCustomerID(customerId)
+        // Then
+        assertThat(order).isNotNull();
+        assertThat(order.size()).isEqualTo(2);
+
     }
     @Test
     public void save_new_order(){

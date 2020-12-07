@@ -29,4 +29,9 @@ public class ItemRepositoryImpl implements ItemRepository {
     public final List<Item> findAll(){
         return itemDataJpaRepository.findAll();
     }
+
+    @Override
+    public List<Item> findById(List<String> ids) {
+        return itemDataJpaRepository.findAll();
+    }
 }

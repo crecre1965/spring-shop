@@ -18,7 +18,7 @@ public class Order extends AbstractBaseEntity {
         @ManyToMany(targetEntity = Item.class,cascade= CascadeType.ALL)
         private List<Item> items=new ArrayList<>();
 
-        private Integer total;
+        private Integer total=0;
 
         public Customer getCustomer() {
                 return customer;
@@ -31,7 +31,6 @@ public class Order extends AbstractBaseEntity {
         public List<Item> getItems() {
                 return items;
         }
-
         public void setItems(List<Item> items) {
                 this.items = items;
         }
