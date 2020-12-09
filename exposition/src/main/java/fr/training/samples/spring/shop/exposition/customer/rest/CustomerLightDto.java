@@ -1,6 +1,14 @@
 package fr.training.samples.spring.shop.exposition.customer.rest;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+@ApiModel(value = "Customer",description = "contient les informations d'un client")
+@Validated
 public class CustomerLightDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -9,33 +17,26 @@ public class CustomerLightDto implements Serializable {
 
 	private String password;
 
-	/**
-	 * No-arg constructor for JavaBean tools
-	 */
+
 	public CustomerLightDto() {
 
 	}
 
-	/**
-	 * @param name
-	 * @param password
-	 */
+
 	public CustomerLightDto(final String name, final String password) {
 		super();
 		this.name = name;
 		this.password = password;
 	}
 
-	/**
-	 * @return name
-	 */
+	@ApiModelProperty(value="Customer name",example= "toto lolo",required = true)
+	@NotBlank
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * @return password
-	 */
+	@ApiModelProperty(value="mot de passe du client",required = true)
+	@NotBlank
 	public String getPassword() {
 		return password;
 	}

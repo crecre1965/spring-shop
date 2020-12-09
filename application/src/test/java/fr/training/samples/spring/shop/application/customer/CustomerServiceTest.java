@@ -1,5 +1,6 @@
 package fr.training.samples.spring.shop.application.customer;
 
+import fr.training.samples.spring.shop.domain.common.exception.AlreadyExistingException;
 import fr.training.samples.spring.shop.domain.customer.Customer;
 import fr.training.samples.spring.shop.domain.customer.CustomerRepository;
 import org.junit.Test;
@@ -14,8 +15,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.xml.ws.Service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.isNotNull;
+import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes={CustomerServiceImpl.class})
@@ -40,5 +41,23 @@ public class CustomerServiceTest {
         //Then
         assertThat(result).isNotNull();
         verify(customerRepositoryMock, Mockito.times(1)).save(customer);
+    }
+    @Test
+    public void create_Customer_should_not_success_when_already_exist(){
+        //Given
+        final Customer customer =new Customer();
+        customer.setName("Michel Dupont");
+        customer.setPassword("toto");
+        when(customerRepositoryMock.findByName("name")).thenReturn(customer);
+        //When
+        Customer result;
+        try{
+            result=customerService.create(customer);
+        }catch (final Exception e) {
+            assertThat(e).isInstanceOf(AlreadyExistingException.class);
+
+            //Then
+            verify(customerRepositoryMock, never()).save(customer);
+        }
     }
 }

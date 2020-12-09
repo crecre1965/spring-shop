@@ -58,7 +58,7 @@ public class OrderRepositoryTest {
         System.out.println("               ");
         System.out.println("               ");
         System.out.println("               ");
-        assertThat(order).isNotNull();
+       assertThat(order).isNotNull();
         assertThat(order.size()).isEqualTo(2);
 
     }

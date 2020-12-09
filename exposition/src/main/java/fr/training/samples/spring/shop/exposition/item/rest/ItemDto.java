@@ -1,5 +1,9 @@
 package fr.training.samples.spring.shop.exposition.item.rest;
 
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 
@@ -54,6 +58,7 @@ public class ItemDto implements Serializable {
 	/**
 	 * @return
 	 */
+	@Size(min=1)
 	public String getDescription() {
 		return description;
 	}
@@ -68,6 +73,7 @@ public class ItemDto implements Serializable {
 	/**
 	 * @return
 	 */
+
 	public int getPrice() {
 		return price;
 	}

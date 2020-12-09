@@ -1,11 +1,8 @@
 package fr.training.samples.spring.shop.exposition.item.rest;
 
-import fr.training.samples.spring.shop.commun.AbstractMapper;
+import fr.training.samples.spring.shop.exposition.common.AbstractMapper;
 import fr.training.samples.spring.shop.domain.item.Item;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class ItemMapper extends AbstractMapper<ItemDto,Item> {

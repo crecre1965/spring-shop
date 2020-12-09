@@ -1,7 +1,7 @@
 package fr.training.samples.spring.shop.exposition.order.rest;
 
 
-import fr.training.samples.spring.shop.commun.AbstractMapper;
+import fr.training.samples.spring.shop.exposition.common.AbstractMapper;
 import fr.training.samples.spring.shop.domain.order.Order;
 import fr.training.samples.spring.shop.exposition.customer.rest.CustomerMapper;
 import fr.training.samples.spring.shop.exposition.item.rest.ItemMapper;

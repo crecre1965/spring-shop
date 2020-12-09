@@ -2,12 +2,14 @@ package fr.training.samples.spring.shop.exposition.customer.rest;
 
 import fr.training.samples.spring.shop.application.customer.CustomerService;
 import fr.training.samples.spring.shop.application.order.OrderService;
+import fr.training.samples.spring.shop.exposition.common.ErrorModel;
 import fr.training.samples.spring.shop.domain.customer.Customer;
 import fr.training.samples.spring.shop.domain.order.Order;
 import fr.training.samples.spring.shop.exposition.order.rest.OrderDto;
-import fr.training.samples.spring.shop.exposition.order.rest.OrderLightDto;
 import fr.training.samples.spring.shop.exposition.order.rest.OrderMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -51,7 +53,10 @@ public class CustomerResource {
     }
 
     // Créer le client : Post
-
+    @ApiOperation(value = "création d'un client",notes="Veuillez saisir l'ensemble des informations demandées")
+    @ApiResponses(value={@ApiResponse(code=201, message = "client créé"),
+            @ApiResponse(code=403, message = "interdit"),
+            @ApiResponse(code=409, message = "client existant",response= ErrorModel.class)})
     @PostMapping(value="/customers", produces = {"application/json"}, consumes={"application/json"})
     public ResponseEntity<URI> addCustomerUsingPost(@Valid @RequestBody CustomerLightDto customerLightDto){
 
@@ -79,6 +84,10 @@ public class CustomerResource {
     }
 
 // restituer les commandes d'un client : Get
+    @ApiOperation(value = "liste des commandes d'un client",notes="Veuillez fournir un identifiant client")
+    @ApiResponses(value={@ApiResponse(code=200, message = "OK"),
+                            @ApiResponse(code=403, message = "interdit"),
+                            @ApiResponse(code=404, message = "client non trouvé",response= ErrorModel.class)})
     @GetMapping(value="/customers/{id}/orders", produces="application/json")
     public List<OrderDto> getOrders(@PathVariable final String id) {
         final List<Order> orders = orderService.findOrdersByCustomerId(id);

@@ -1,7 +1,15 @@
 package fr.training.samples.spring.shop.exposition.item.rest;
 
-import java.io.Serializable;
+import io.swagger.annotations.ApiModel;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
+@ApiModel(value = "items",description = "contient les informations d'un item")
+@Validated
 public class ItemLightDto implements Serializable {
 
 	/**
@@ -12,6 +20,7 @@ public class ItemLightDto implements Serializable {
 	/**
 	 * description of type String
 	 */
+
 	private String description;
 
 	/**
@@ -34,6 +43,7 @@ public class ItemLightDto implements Serializable {
 	/**
 	 * @return
 	 */
+	@NotBlank
 	public String getDescription() {
 		return description;
 	}
@@ -41,6 +51,8 @@ public class ItemLightDto implements Serializable {
 	/**
 	 * @return
 	 */
+	@Positive
+	@NotNull
 	public int getPrice() {
 		return price;
 	}

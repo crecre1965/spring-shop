@@ -1,11 +1,15 @@
 package fr.training.samples.spring.shop.exposition.order.rest;
 
 import fr.training.samples.spring.shop.exposition.item.rest.ItemLightDto;
+import org.springframework.validation.annotation.Validated;
 
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
-
+@Validated
 public class OrderLightDto implements Serializable {
 
 	/**
@@ -32,10 +36,11 @@ public class OrderLightDto implements Serializable {
 	/**
 	 * @return
 	 */
+	@NotNull
 	public String getCustomerID() {
 		return customerID;
 	}
-
+	@NotEmpty
 	public List<String> getItems() {
 		return items;
 	}

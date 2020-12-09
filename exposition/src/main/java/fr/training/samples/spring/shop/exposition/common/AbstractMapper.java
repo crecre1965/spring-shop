@@ -1,4 +1,4 @@
-package fr.training.samples.spring.shop.commun;
+package fr.training.samples.spring.shop.exposition.common;
 
 import java.util.ArrayList;
 import java.util.List;

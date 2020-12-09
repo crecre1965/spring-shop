@@ -1,6 +1,7 @@
 package fr.training.samples.spring.shop.application.customer;
 
 
+import fr.training.samples.spring.shop.domain.common.exception.AlreadyExistingException;
 import fr.training.samples.spring.shop.domain.customer.Customer;
 import fr.training.samples.spring.shop.domain.customer.CustomerRepository;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer create(Customer customer) {
+            final Customer existingCustomer=customerRepository.findByName(customer.getName());
+            if (existingCustomer!=null) {
+                throw new AlreadyExistingException("client déjà existant !!!");
+            }
             customerRepository.save(customer);
-        return customer;
+            return customer;
     }
 
     @Override
