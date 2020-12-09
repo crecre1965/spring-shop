@@ -6,5 +6,5 @@ public interface CustomerService {
     public Customer create(Customer customer);
     public Customer findOne(String customerId);
     public Customer findByName(String customerName);
-    public void update (Customer customer);
+    public void update (String customerId, Customer customer);
 }

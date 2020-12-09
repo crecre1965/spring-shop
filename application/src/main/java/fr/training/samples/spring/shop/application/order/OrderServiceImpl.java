@@ -7,7 +7,9 @@ import fr.training.samples.spring.shop.domain.item.ItemRepository;
 import fr.training.samples.spring.shop.domain.order.Order;
 import fr.training.samples.spring.shop.domain.order.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +31,14 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Order findOne(String orderId) {
         return null;
     }
 
     @Override
+    @Transactional
+    @Secured("ROLE_USER")
     public Order addOrder(final String customerId, final List<String> itemIds) {
         final Customer customer = customerRepository.findById(customerId);
         final Order order=new Order();
@@ -50,7 +55,8 @@ public class OrderServiceImpl implements OrderService{
     // client repo pour recherche cusomer par id
     // creer une nouvelle méthjode ou boucler id par id avec la methose fin by id de item repo
 
-
+    @Secured("ROLE-USER")
+    @Transactional(readOnly = true)
     public List<Order> findOrdersByCustomerId(String customerId) {
         return orderRepository.findOrdersByCustomerId(customerId);
 

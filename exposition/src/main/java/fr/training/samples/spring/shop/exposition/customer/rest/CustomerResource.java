@@ -76,7 +76,7 @@ public class CustomerResource {
 
         customerDto.setCustomerID(id);
         final Customer customer=customerEntityMapper.mapToEntity(customerDto);
-        customerService.update(customer);
+        customerService.update(customer.getId(), customer);
 
         final URI location= ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(customer.getId()).toUri();
 
